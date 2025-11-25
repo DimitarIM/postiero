@@ -2,11 +2,10 @@
 
 import PostUpdateForm from '@/components/forms/PostUpdateForm'
 import { usePostStore } from '@/store/usePostStore';
-import { PostType } from '@/types/types'
 import { useParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-function page() {
+function Update() {
 
     const { selectedPost, fetchPost } = usePostStore();
     const params = useParams();
@@ -22,4 +21,4 @@ function page() {
     )
 }
 
-export default page
+export default Update

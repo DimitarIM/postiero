@@ -1,4 +1,3 @@
-import { verifySession } from "@/lib/auth/dal";
 import { createBackClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 

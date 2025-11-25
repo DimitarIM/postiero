@@ -8,7 +8,7 @@ interface FormData {
     post_id: string,
     parent_id: string | null,
     content: string,
-    level: Number
+    level: number
 }
 
 interface CommentState {

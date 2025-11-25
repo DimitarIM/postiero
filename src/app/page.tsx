@@ -1,8 +1,6 @@
 'use client'
 
 import PostsHomeGrid from "@/components/PostsHomeGrid";
-import Image from "next/image";
-
 export default function Home() {
   
   return (

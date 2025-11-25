@@ -1,6 +1,6 @@
 'use client'
 
-import { EditorContent, useEditor } from '@tiptap/react'
+import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Highlight from '@tiptap/extension-highlight'
@@ -8,7 +8,12 @@ import TextAlign from '@tiptap/extension-text-align';
 import React, { useEffect } from 'react'
 import MenuBar from './MenuBar'
 
-function TextEditor({content, onChange, editorRef}:{content:string, onChange:(content:string) => void, editorRef?: any}) {
+function TextEditor({ content, onChange, editorRef }:
+  {
+    content: string,
+    onChange: (content: string) => void,
+    editorRef?: React.RefObject<Editor | null>
+  }) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -37,7 +42,7 @@ function TextEditor({content, onChange, editorRef}:{content:string, onChange:(co
         class: "w-full h-full min-w-[400px] border-1 border-accent border-t-0 p-3 min-h-[120px]",
       }
     },
-    onUpdate:({editor}) => {
+    onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     }
   })

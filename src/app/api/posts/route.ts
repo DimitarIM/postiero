@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         const checkedSession = await verifySession();
         if (!checkedSession) return NextResponse.json({ error: "Not Verified" }, { status: 401 });
 
-        const { title, image, upload_url, content } = await req.json();
+        const { title, upload_url, content } = await req.json();
         const user_id = checkedSession.userId;
         console.log(user_id);
 

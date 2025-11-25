@@ -9,6 +9,7 @@ import { Loader2 } from 'lucide-react';
 import TextEditor from '../text-editor/TextEditor';
 import { useCommentStore } from '@/store/useCommentStore';
 import { useParams } from 'next/navigation';
+import { Editor } from '@tiptap/react';
 
 function CommentForm({ setIsExpanded, loadReplies, parentId, level }: { 
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>,
@@ -20,7 +21,7 @@ function CommentForm({ setIsExpanded, loadReplies, parentId, level }: {
   const { loading, fetchComments, addComment, setFormData } = useCommentStore();
   const [editorContent, setEditorContent] = useState<string>("");
 
-  const editorRef = React.useRef<any>(null);
+  const editorRef = React.useRef<Editor | null>(null);
 
   const { id } = useParams();
 

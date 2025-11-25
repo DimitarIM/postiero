@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { PostFormSchema } from "./formSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-import { Loader2, UserPlus } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import TextEditor from "../text-editor/TextEditor";
 import Image from "next/image";
 import { useDropzone } from "react-dropzone";

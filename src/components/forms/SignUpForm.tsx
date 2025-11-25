@@ -50,8 +50,7 @@ function SignUpForm() {
 
         <div className="relative flex flex-col justify-center items-center">
           <button type='submit' 
-          className='flex justify-center items-center bg-detail text-foreground cursor-pointer h-6 min-w-60'
-          onClick={()=>{router.push('/')}}>
+          className='flex justify-center items-center bg-detail text-foreground cursor-pointer h-6 min-w-60'>
             {
               loading ? <Loader2 className="size-4 animate-spin" />
                 : "Sign Up"

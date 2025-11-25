@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation';
 import { LoginFormSchema, SignUpFormSchema } from '@/components/forms/formSchemas';
 import { createFrontClient } from '@/utils/supabase/client';
 import React, { createContext, useContext, useState } from 'react'
@@ -23,6 +24,8 @@ interface ModalContextType {
 const ModalContext = createContext<ModalContextType>(null!);
 
 export const ModalContextProvider = ({ children }: { children: React.ReactNode }) => {
+    const router = useRouter();
+    
     const [loading, setLoading] = useState<boolean>(false);
     const [modalIsActive, setModalIsActive] = useState<boolean>(false);
     const [modalFormType, setModalFormType] = useState<string | null>(null);
@@ -40,6 +43,7 @@ export const ModalContextProvider = ({ children }: { children: React.ReactNode }
 
             console.log("Logged in");
             setModalIsActive(false);
+            router.push("/");
             return { success: true, data }
         } catch (err) {
             console.log("Unexpected error: ", (err as Error).message);
@@ -87,6 +91,7 @@ export const ModalContextProvider = ({ children }: { children: React.ReactNode }
             console.log("Signed Up Successfully");
 
             setModalIsActive(false);
+            router.push("/");
             return { success: true, data };
         } catch (error) {
             console.log("Unexpected Error: ", (error as Error).message);

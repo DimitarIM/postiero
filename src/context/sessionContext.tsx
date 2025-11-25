@@ -1,6 +1,5 @@
 'use client'
 
-;
 import { ProfileType } from "@/types/types";
 import { createFrontClient } from "@/utils/supabase/client";
 import { createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from "react";

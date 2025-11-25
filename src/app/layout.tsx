@@ -3,9 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import FormModal from "@/components/FormModal";
+import Sidebar from "@/components/Sidebar";
 import { ModalContextProvider } from "@/context/modalContext";
 import { SessionContextProvider } from "@/context/sessionContext";
-import Sidebar from "@/components/Sidebar";
 import { SidebarContextProvider } from "@/context/sidebarContext";
 
 const geistSans = Geist({

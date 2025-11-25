@@ -1,7 +1,7 @@
 'use client'
 
-import { HomeIcon } from 'lucide-react'
-import Menu from '@/assets/icons/menu.svg'
+import { HomeIcon, Menu } from 'lucide-react'
+// import Menu from '@/assets/icons/menu.svg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'

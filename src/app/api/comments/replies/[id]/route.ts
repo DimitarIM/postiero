@@ -1,11 +1,11 @@
 import { createBackClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
         const supabase = await createBackClient();
 
-        const { id } = await params;
+        const { id } = await context.params;
 
         const { data, error } = await supabase
             .from("comments")

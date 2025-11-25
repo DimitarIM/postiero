@@ -2,14 +2,14 @@ import { verifySession } from "@/lib/auth/dal";
 import { createBackClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest,{ params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
         const checkedSession = await verifySession();
         if (!checkedSession) return NextResponse.json({ error: "Not Verified" }, { status: 401 });
 
         const supabase = await createBackClient();
 
-        const { id } = await params
+        const { id } = await context.params
         console.log(id);
 
         const { data, error } = await supabase

@@ -2,12 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifySession } from "@/lib/auth/dal";
 import { createBackClient } from "@/utils/supabase/server";
 
-export async function PUT(
-  req: NextRequest,
-  context: { params: Promise<{ id: string }> }
-) {
-  const { params } = context;
-  const { id } = await params; // await it here
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+  const { id } = await context.params;
 
   const checkedSession = await verifySession();
   if (!checkedSession)
@@ -29,12 +25,8 @@ export async function PUT(
   return NextResponse.json({ message: "Comment Updated!", success: true, data }, { status: 200 });
 }
 
-export async function DELETE(
-  req: NextRequest,
-  context: { params: Promise<{ id: string }> }
-) {
-  const { params } = context;
-  const { id } = await params; 
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+  const { id } = await context.params; 
 
   const checkedSession = await verifySession();
   if (!checkedSession)

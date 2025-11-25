@@ -2,11 +2,11 @@ import { verifySession } from "@/lib/auth/dal";
 import { createBackClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req:NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req:NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
         const supabase = await createBackClient();
 
-        const { id } = await params
+        const { id } = await context.params
 
         const { data, error } = await supabase
             .from("posts")
@@ -28,7 +28,7 @@ export async function GET(req:NextRequest, { params }: { params: { id: string } 
     }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
         const checkedSession = await verifySession();
         if (!checkedSession) return NextResponse.json({ error: "Not Verified" }, { status: 401 });
@@ -37,7 +37,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
         console.log(title, upload_url, content);
         const supabase = await createBackClient();
-        const {id} = await params;
+        const {id} = await context.params;
 
         const { data, error } = await supabase
             .from("posts")

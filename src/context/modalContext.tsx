@@ -43,7 +43,6 @@ export const ModalContextProvider = ({ children }: { children: React.ReactNode }
 
             console.log("Logged in");
             setModalIsActive(false);
-            router.push("/");
             return { success: true, data }
         } catch (err) {
             console.log("Unexpected error: ", (err as Error).message);
@@ -91,7 +90,6 @@ export const ModalContextProvider = ({ children }: { children: React.ReactNode }
             console.log("Signed Up Successfully");
 
             setModalIsActive(false);
-            router.push("/");
             return { success: true, data };
         } catch (error) {
             console.log("Unexpected Error: ", (error as Error).message);

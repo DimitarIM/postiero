@@ -64,7 +64,7 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
 
 
 
-export async function DELETE(req:NextRequest, context: { params: Promise<{ id: string }> } }) {
+export async function DELETE(req:NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
         const checkedSession = await verifySession();
         if (!checkedSession) return NextResponse.json({ error: "Not Verified" }, { status: 401 });

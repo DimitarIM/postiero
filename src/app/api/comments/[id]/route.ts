@@ -12,10 +12,12 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
         const supabase = await createBackClient();
 
+        const {id} = await params;
+
         const { data, error } = await supabase
             .from("posts")
             .update({ content: content })
-            .eq('id', params.id);
+            .eq('id', id);
 
         if (error) {
             console.error("Error updating:", error.message);
@@ -37,17 +39,19 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
 
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     try {
         const checkedSession = await verifySession();
         if (!checkedSession) return NextResponse.json({ error: "Not Verified" }, { status: 401 });
 
         const supabase = await createBackClient();
 
+        const {id} = await params;
+
         const { data, error } = await supabase
             .from("comment")
             .delete()
-            .eq('id', params.id);
+            .eq('id', id);
 
         if (error) {
             console.error("Error deleting:", error.message);

@@ -1,3 +1,5 @@
+'use client'
+
 import { PostType } from '@/types/types'
 import React from 'react'
 

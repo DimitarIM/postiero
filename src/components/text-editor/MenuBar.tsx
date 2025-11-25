@@ -1,3 +1,5 @@
+'use client'
+
 import { Editor } from '@tiptap/react'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Heading, Heading1, Heading2, Heading3, Highlighter, Italic, List, ListOrdered, MoveLeft, Strikethrough } from 'lucide-react'
 import React from 'react'

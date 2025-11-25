@@ -1,3 +1,5 @@
+'use client'
+
 import { CommentType } from '@/types/types'
 import React, { useEffect, useState } from 'react'
 import CommentForm from './forms/CommentForm'

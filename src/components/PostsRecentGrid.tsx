@@ -1,3 +1,5 @@
+'use client'
+
 import { usePostStore } from '@/store/usePostStore';
 import React, { useEffect } from 'react'
 import PostMinimized from './PostMinimized';

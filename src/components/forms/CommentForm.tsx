@@ -1,15 +1,20 @@
 'use client'
 
+
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { CommentFormSchema } from './formSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
 import { Loader2 } from 'lucide-react';
-import TextEditor from '../text-editor/TextEditor';
 import { useCommentStore } from '@/store/useCommentStore';
 import { useParams } from 'next/navigation';
 import { Editor } from '@tiptap/react';
+import dynamic from 'next/dynamic';
+
+const TextEditor = dynamic(() => import('../text-editor/TextEditor'), {
+  ssr: false,
+})
 
 function CommentForm({ setIsExpanded, loadReplies, parentId, level }: { 
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>,

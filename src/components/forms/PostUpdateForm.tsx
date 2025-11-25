@@ -7,14 +7,17 @@ import { PostFormSchema } from "./formSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { Loader2 } from "lucide-react";
-import TextEditor from "../text-editor/TextEditor";
 import Image from "next/image";
 import { useDropzone } from "react-dropzone";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useUploadStore } from "@/store/useUploadStore";
 import { usePostStore } from "@/store/usePostStore";
 import { PostType } from "@/types/types";
+import dynamic from 'next/dynamic';
 
+const TextEditor = dynamic(() => import('../text-editor/TextEditor'), {
+  ssr: false,
+})
 
 function PostUpdateForm({ post }: {post:PostType}) {
   const { loading, editPost, setFormData } = usePostStore();

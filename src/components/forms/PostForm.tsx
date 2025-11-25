@@ -8,11 +8,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
 import { Loader2 } from 'lucide-react';
 import { usePostStore } from '@/store/usePostStore';
-import TextEditor from '../text-editor/TextEditor';
 import { useDropzone } from "react-dropzone"
 import Image from 'next/image';
 import { useUploadThing } from '@/lib/uploadthing';
 import { useUploadStore } from '@/store/useUploadStore';
+import dynamic from 'next/dynamic';
+
+const TextEditor = dynamic(() => import('../text-editor/TextEditor'), {
+  ssr: false,
+})
 
 function PostForm() {
   const { loading, addPost, setFormData } = usePostStore();

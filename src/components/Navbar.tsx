@@ -5,7 +5,7 @@ import LogoutBtn from './buttons/LogoutBtn'
 import Link from 'next/link'
 import LoginBtn from './buttons/LoginBtn';
 import SignUpBtn from './buttons/SignUpBtn';
-import ProfileIcon from '@/assets/icons/profile_icon_placeholder.svg'
+import { ProfileIcon } from '@/components/icons/ProfileIcon'
 import { useSessionContext } from '@/context/sessionContext';
 
 

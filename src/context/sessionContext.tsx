@@ -43,7 +43,7 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
 
     useEffect(() => {
         checkSession();
-
+        
         const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
             setSessionIsActive(!!session);
         })

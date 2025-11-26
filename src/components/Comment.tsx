@@ -4,9 +4,11 @@ import { CommentType } from '@/types/types'
 import React, { useEffect, useState } from 'react'
 import CommentForm from './forms/CommentForm'
 import { useCommentStore } from '@/store/useCommentStore';
+import { useSessionContext } from '@/context/sessionContext';
 
 function Comment({ commentInfo, commentId }: { commentInfo: CommentType, commentId: string }) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const {sessionIsActive} = useSessionContext();
   const [replies, setReplies] = useState<CommentType[]>([]);
   const { fetchReplies } = useCommentStore();
 
@@ -27,7 +29,7 @@ function Comment({ commentInfo, commentId }: { commentInfo: CommentType, comment
         <div dangerouslySetInnerHTML={{ __html: commentInfo.content }} />
       </div>
       {
-        !isExpanded && <button className='bg-blue-900 p-1 rounded-[4px] cursor-pointer w-[70px] text-[14px]'
+        !isExpanded && sessionIsActive && <button className='bg-blue-900 p-1 rounded-[4px] cursor-pointer w-[70px] text-[14px]'
           onClick={() => isExpanded ? setIsExpanded(false) : setIsExpanded(true)}>Reply</button>
       }
       {

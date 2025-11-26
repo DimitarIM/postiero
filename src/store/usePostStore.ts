@@ -58,7 +58,7 @@ export const usePostStore = create<PostState>((set, get) => ({
     set({ loading: true });
 
     try {
-      const response = await fetch(`${BASE_URL}/api/posts`);
+      const response = await fetch(`${BASE_URL}/api/posts`, {cache: 'no-store'});
       if (!response.ok) throw new Error(`Status: ${response.status}`);
 
       const data = await response.json();

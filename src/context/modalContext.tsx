@@ -5,6 +5,7 @@ import { LoginFormSchema, SignUpFormSchema } from '@/components/forms/formSchema
 import { createFrontClient } from '@/utils/supabase/client';
 import React, { createContext, useContext, useState } from 'react'
 import z from 'zod';
+import { usePostStore } from '@/store/usePostStore';
 
 interface ModalContextType {
     loading: boolean;
@@ -26,6 +27,7 @@ const ModalContext = createContext<ModalContextType>(null!);
 export const ModalContextProvider = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter();
     
+    const {fetchPosts} = usePostStore();
     const [loading, setLoading] = useState<boolean>(false);
     const [modalIsActive, setModalIsActive] = useState<boolean>(false);
     const [modalFormType, setModalFormType] = useState<string | null>(null);
@@ -44,6 +46,7 @@ export const ModalContextProvider = ({ children }: { children: React.ReactNode }
             console.log("Logged in");
             setModalIsActive(false);
             router.push("/");
+            fetchPosts();
             return { success: true, data }
         } catch (err) {
             console.log("Unexpected error: ", (err as Error).message);
@@ -92,6 +95,7 @@ export const ModalContextProvider = ({ children }: { children: React.ReactNode }
 
             setModalIsActive(false);
             router.push("/");
+            fetchPosts();
             return { success: true, data };
         } catch (error) {
             console.log("Unexpected Error: ", (error as Error).message);

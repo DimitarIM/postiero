@@ -13,6 +13,10 @@ function PostsHomeGrid() {
     fetchPosts();
   }, [])
 
+  useEffect(()=>{
+    console.log("Posts:",posts);
+  },[posts])
+
   const postsFiltered = useMemo(() => {
     if(!searchQuery) {
       return posts;

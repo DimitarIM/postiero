@@ -67,7 +67,7 @@ function Post() {
           }
           <div className='flex flex-col gap-3'>
             {
-              comments.filter(c=>c.parent_id===null).map((comment, index) => (
+              comments.filter(c=>c.parent_id===null && c.post_id === id).map((comment, index) => (
                 <Comment commentInfo={comment} commentId = {comment.id} key={index} />
               ))
             }

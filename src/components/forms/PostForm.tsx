@@ -59,7 +59,7 @@ function PostForm() {
     resolver: zodResolver(PostFormSchema),
     defaultValues: {
       title: "",
-      content: "",
+      content: undefined,
       upload_url: undefined, 
     },
   });

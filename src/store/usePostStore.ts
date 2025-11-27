@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface FormData {
   title: string,
-  content: string,
+  content: string | undefined,
   upload_url: string | undefined,
 }
 

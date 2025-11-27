@@ -13,7 +13,7 @@ export const SignUpFormSchema = z.object({
 
 export const PostFormSchema = z.object({
     title: z.string().min(3),
-    content: z.string().min(1),
+    content: z.string().optional(),
     upload_url: z.string().optional(),
 });
 

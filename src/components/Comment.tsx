@@ -8,9 +8,9 @@ import { useSessionContext } from '@/context/sessionContext';
 
 function Comment({ commentInfo, commentId }: { commentInfo: CommentType, commentId: string }) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const {sessionIsActive} = useSessionContext();
+  const { sessionIsActive, userInfo } = useSessionContext();
   const [replies, setReplies] = useState<CommentType[]>([]);
-  const { fetchReplies } = useCommentStore();
+  const { fetchReplies, deleteComment } = useCommentStore();
 
   async function loadReplies() {
     const data = await fetchReplies(commentId);
@@ -28,12 +28,19 @@ function Comment({ commentInfo, commentId }: { commentInfo: CommentType, comment
         <h2 className='font-bold'>{commentInfo.username}</h2>
         <div dangerouslySetInnerHTML={{ __html: commentInfo.content }} />
       </div>
+      <div className='flex gap-10'>
+        {
+          !isExpanded && sessionIsActive && <button className='bg-blue-900 p-1 rounded-[4px] cursor-pointer w-[70px] text-[14px]'
+            onClick={() => isExpanded ? setIsExpanded(false) : setIsExpanded(true)}>Reply</button>
+        }
+        {
+          !isExpanded && sessionIsActive && userInfo?.user_id === commentInfo.user_id && <button className='bg-red-900 p-1 rounded-[4px] cursor-pointer w-[70px] text-[14px]'
+            onClick={() => deleteComment(commentInfo.id)}>Delete</button>
+        }
+      </div>
+
       {
-        !isExpanded && sessionIsActive && <button className='bg-blue-900 p-1 rounded-[4px] cursor-pointer w-[70px] text-[14px]'
-          onClick={() => isExpanded ? setIsExpanded(false) : setIsExpanded(true)}>Reply</button>
-      }
-      {
-        isExpanded && <CommentForm setIsExpanded={setIsExpanded} loadReplies={loadReplies} parentId={commentId} level={commentInfo.level++}/>
+        isExpanded && <CommentForm setIsExpanded={setIsExpanded} loadReplies={loadReplies} parentId={commentId} level={commentInfo.level++} />
       }
       <div className='flex flex-col gap-3'>
         {

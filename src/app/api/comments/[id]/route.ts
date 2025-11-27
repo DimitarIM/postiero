@@ -35,7 +35,7 @@ export async function DELETE(req: NextRequest, context: { params: Promise<{ id: 
   const supabase = await createBackClient();
 
   const { data, error } = await supabase
-    .from("comment")
+    .from("comments")
     .delete()
     .eq("id", id);
 

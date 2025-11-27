@@ -129,7 +129,7 @@ export const useCommentStore = create<CommentState>((set, get) => ({
     deleteComment: async (id) => {
         set({ loading: true });
         try {
-            await fetch(`${BASE_URL}/api/profiles/${id}`, {
+            await fetch(`${BASE_URL}/api/comments/${id}`, {
                 method: "DELETE",
             })
             set(prev => ({ comments: prev.comments.filter(p => p.id !== id) }));

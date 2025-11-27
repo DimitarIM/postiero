@@ -10,6 +10,7 @@ export type PostType = {
 
 export type CommentType = {
     id: string,
+    user_id: string,
     post_id: string,
     parent_id: string,
     level: number,

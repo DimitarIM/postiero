@@ -9,7 +9,7 @@ function PostMinimized({postInfo}:{postInfo:PostType}) {
       <div className='flex flex-col text-white'>
       <h2>{postInfo.title}</h2>
       {
-        postInfo.upload_url ? <img className='h-120 w-200' src={postInfo.upload_url}></img> : null
+        postInfo.upload_url ? <img className='w-full max-h-96 object-contain' src={postInfo.upload_url}></img> : null
       }
     </div>
     </a>

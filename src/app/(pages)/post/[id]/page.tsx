@@ -30,7 +30,7 @@ function Post() {
 
         <h1>{selectedPost?.title}</h1>
         {
-          selectedPost?.upload_url ? <img className='w-160 h-120' src={selectedPost.upload_url}></img> : null
+          selectedPost?.upload_url ? <img className='w-full max-h-96 object-contain' src={selectedPost.upload_url}></img> : null
         }
         {selectedPost?.content && (
           <div dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
